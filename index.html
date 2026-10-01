@@ -1,0 +1,230 @@
+`html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VERSO.CAV // ARCHIVE</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#0a0000;
+    color:#ff2b2b;
+    font-family:'Courier New', monospace;
+    min-height:100vh;
+    overflow-x:hidden;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,0,0,0.03) 0px, rgba(255,0,0,0.03) 1px, transparent 1px, transparent 3px);
+  }
+  body::before {
+    content:"";
+    position:fixed; inset:0;
+    background:radial-gradient(circle at 50% 50%, transparent 40%, rgba(0,0,0,0.7) 100%);
+    pointer-events:none; z-index:5;
+  }
+  .glow { text-shadow:0 0 5px #ff2b2b, 0 0 15px #ff0000; }
+
+  header {
+    border-bottom:1px solid #ff2b2b;
+    padding:18px 24px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+  }
+  .logo { font-size:22px; letter-spacing:4px; font-weight:bold; }
+  .status { font-size:12px; color:#8a0000; }
+  .status span { color:#ff2b2b; }
+
+  .marquee {
+    border-bottom:1px solid #3a0000;
+    padding:6px 0; font-size:12px; color:#8a0000;
+    white-space:nowrap; overflow:hidden;
+  }
+  .marquee div { display:inline-block; animation:scroll 22s linear infinite; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  nav {
+    display:flex; gap:2px; padding:0 24px; border-bottom:1px solid #3a0000;
+    flex-wrap:wrap;
+  }
+  nav button {
+    background:transparent; border:none; color:#8a0000;
+    font-family:inherit; font-size:13px; padding:12px 16px;
+    cursor:pointer; letter-spacing:1px; border-bottom:2px solid transparent;
+  }
+  nav button:hover { color:#ff2b2b; }
+  nav button.active { color:#ff2b2b; border-bottom-color:#ff2b2b; }
+
+  main { padding:28px 24px; max-width:1000px; }
+  section { display:none; animation:fade .35s ease; }
+  section.active { display:block; }
+  @keyframes fade { from{opacity:0; transform:translateY(6px)} to{opacity:1} }
+
+  .term {
+    background:#120000; border:1px solid #3a0000; padding:18px;
+    font-size:13px; line-height:1.7; margin-bottom:22px;
+  }
+  .term .prompt { color:#8a0000; }
+  .term .ok { color:#ff2b2b; }
+  .cursor { display:inline-block; width:8px; height:14px; background:#ff2b2b; animation:blink 1s step-end infinite; vertical-align:middle; }
+  @keyframes blink { 50%{opacity:0} }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; }
+  .card {
+    border:1px solid #3a0000; background:#0f0000; padding:16px;
+    transition:.2s; cursor:pointer;
+  }
+  .card:hover { border-color:#ff2b2b; box-shadow:0 0 18px rgba(255,0,0,0.25); transform:translateY(-2px); }
+  .card .tag { font-size:10px; color:#8a0000; letter-spacing:2px; }
+  .card h3 { font-size:15px; margin:6px 0; letter-spacing:1px; }
+  .card .meta { font-size:11px; color:#6a0000; margin-top:8px; }
+  .flag { color:#ff2b2b; }
+
+  .file {
+    border-left:3px solid #ff2b2b; background:#0f0000;
+    padding:14px 16px; margin-bottom:10px; font-size:13px;
+  }
+  .file .redact { background:#ff2b2b; color:#ff2b2b; user-select:none; }
+  .file .id { color:#8a0000; font-size:11px; }
+
+  footer {
+    border-top:1px solid #3a0000; padding:16px 24px;
+    font-size:11px; color:#5a0000; text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo glow">VERSO<span style="color:#8a0000">.CAV</span></div>
+  <div class="status">NODE: <span>ENCRYPTED</span> · PROXIES: <span>3</span> · UPTIME: <span>142d</span></div>
+</header>
+
+<div class="marquee"><div>
+  [ CONNECTION SECURE ] · [ WELCOME, GUEST ] · [ ВСЕ ДАННЫЕ ВЫМЫШЛЕНЫ ] · [ DO NOT TRACE ] · [ ARCHIVE v4.2 ] · [ CONNECTION SECURE ] · [ WELCOME, GUEST ] · [ ВСЕ ДАННЫЕ ВЫМЫШЛЕНЫ ] · [ DO NOT TRACE ] · [ ARCHIVE v4.2 ] ·
+</div></div>
+
+<nav>
+  <button class="active" data-t="home">// HOME</button>
+  <button data-t="targets">// TARGETS / ЦЕЛИ</button>
+  <button data-t="files">// FILES / ФАЙЛЫ</button>
+  <button data-t="logs">// LOGS / ЖУРНАЛ</button>
+</nav>
+
+<main>
+<!-- HOME -->
+  <section id="home" class="active">
+    <div class="term">
+      <div><span class="prompt">verso@cav:~$</span> ./init --archive</div>
+      <div class="ok">[OK] loading encrypted node...</div>
+      <div class="ok">[OK] 47 records found</div>
+      <div><span class="prompt">verso@cav:~$</span> whoami</div>
+      <div class="ok">VERSO — independent operator. no crew, no name.</div>
+      <div><span class="prompt">verso@cav:~$</span> ls -la</div>
+      <div>targets/  files/  logs/  README.txt</div>
+      <div><span class="prompt">verso@cav:~$</span> <span class="cursor"></span></div>
+    </div>
+    <div class="term" style="border-color:#5a0000">
+      <div class="glow" style="font-size:12px; letter-spacing:2px;">README.txt</div>
+      <p style="margin-top:10px; color:#8a0000; line-height:1.8;">
+        Это архив вымышленной группировки. Все имена, компании и «утечки» — <b>выдумка</b>.
+        Сайт создан как игровой ARG-интерфейс. Любое совпадение случайно.
+        Мы не доксим людей. Мы рассказываем историю.
+      </p>
+    </div>
+  </section>
+
+  <!-- TARGETS -->
+  <section id="targets">
+    <div class="grid">
+      <div class="card">
+        <div class="tag">#FRAUD</div>
+        <h3>NEXON-7 Logistics</h3>
+        <div class="meta">STATUS: <span class="flag">COMPROMISED</span><br>DUMP: 12.4 GB<br>DATE: 2024-11-03</div>
+      </div>
+      <div class="card">
+        <div class="tag">#COVERUP</div>
+        <h3>Halcyon Biotech</h3>
+        <div class="meta">STATUS: <span class="flag">PARTIAL</span><br>DUMP: 4.1 GB<br>DATE: 2024-10-19</div>
+      </div>
+      <div class="card">
+        <div class="tag">#EMBEZZLEMENT</div>
+        <h3>Orbital Freight Union</h3>
+        <div class="meta">STATUS: <span style="color:#8a0000">PENDING</span><br>DUMP: --<br>DATE: --</div>
+      </div>
+      <div class="card">
+        <div class="tag">#COVERUP</div>
+        <h3>Kestrel Media Group</h3>
+        <div class="meta">STATUS: <span class="flag">COMPROMISED</span><br>DUMP: 8.7 GB<br>DATE: 2024-09-28</div>
+      </div>
+      <div class="card">
+        <div class="tag">#FRAUD</div>
+        <h3>Vantar Holdings</h3>
+        <div class="meta">STATUS: <span style="color:#8a0000">SEALED</span><br>DUMP: 2.2 GB<br>DATE: 2024-08-11</div>
+      </div>
+      <div class="card">
+        <div class="tag">#LEAK</div>
+        <h3>Полярная Сеть</h3>
+        <div class="meta">STATUS: <span class="flag">OPEN</span><br>DUMP: 19.3 GB<br>DATE: 2024-11-20</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILES -->
+  <section id="files">
+    <div class="file">
+      <div class="id">ID: V-0442</div>
+      <div>NAME: <b>Marlene Okonkwo</b> — CFO, Halcyon Biotech</div>
+      <div>STATUS: <span class="flag">FLAGGED</span></div>
+      <div>NOTES: offshore accounts, 3 shell companies, <span class="redact">████████</span></div>
+    </div>
+    <div class="file">
+      <div class="id">ID: V-0517</div>
+      <div>NAME: <b>Дмитрий Лазарев</b> — директор, Полярная Сеть</div>
+      <div>STATUS: <span class="flag">FLAGGED</span></div>
+      <div>NOTES: <span class="redact">██████</span> контракты, связь с <span class="redact">████████</span></div>
+    </div>
+    <div class="file">
+      <div class="id">ID: V-0603</div>
+      <div>NAME: <b>Iris Vandermeer</b> — analyst, Kestrel Media</div>
+      <div>STATUS: <span style="color:#8a0000">CLEARED</span></div>
+      <div>NOTES: whistleblower? <span class="redact">█████</span></div>
+    </div>
+    <div class="file">
+      <div class="id">ID: V-0711</div>
+      <div>NAME: <b>Тимур Асланов</b> — логист, Orbital Freight</div>
+      <div>STATUS: <span class="flag">FLAGGED</span></div>
+      <div>NOTES: <span class="redact">██████████</span>, 4 транзитных узла</div>
+    </div>
+  </section>
+
+  <!-- LOGS -->
+  <section id="logs">
+    <div class="term">
+<div><span class="prompt">2024-11-03 //</span> вошли через старый VPN-порт. админ даже не заметил. забрали 40GB.</div>
+      <div><span class="prompt">2024-10-19 //</span> Halcyon patched their edge. took the side door instead.</div>
+      <div><span class="prompt">2024-09-28 //</span> Kestrel — 8.7GB. половина мусор, но два файла того стоили.</div>
+      <div><span class="prompt">2024-08-11 //</span> Vantar sealed the dump. not our doing. someone else is inside.</div>
+      <div><span class="prompt">2024-07-30 //</span> new proxy chain. .cav node is stable. <span class="cursor"></span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  VERSO.CAV · all data fictional · ARG project · 2024
+</footer>
+
+<script>
+  const nav = document.querySelectorAll('nav button');
+  const secs = document.querySelectorAll('section');
+  nav.forEach(b => b.addEventListener('click', () => {
+    nav.forEach(x => x.classList.remove('active'));
+    secs.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById(b.dataset.t).classList.add('active');
+  }));
+</script>
+
+</body>
+</html>
+`
